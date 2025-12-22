@@ -54,12 +54,15 @@ if st.button("开始分析"):
         else:
             st.info("无有效高频词汇（已过滤停用词/数字/单字）")
 
-        # 3. 情感倾向分析
+        # 3. 情感倾向分析（修复核心错误：调整st.metric参数）
         st.subheader("3. 情感倾向分析")
         s = SnowNLP(text_input)
         sentiment_score = s.sentiments  # 情感得分（0-1，越接近1越积极）
         sentiment_label = "积极" if sentiment_score > 0.6 else "中性" if sentiment_score > 0.4 else "消极"
-        st.metric("情感得分", round(sentiment_score, 3), label=sentiment_label)
+        
+        # 正确写法：st.metric(标签, 主值, 可选的变化值)
+        # 把情感标签作为主标题的一部分，避免参数错误
+        st.metric(f"情感得分（{sentiment_label}）", round(sentiment_score, 3))
 
 # 侧边栏信息
 with st.sidebar:
