@@ -1,4 +1,7 @@
-streamlit>=1.30.0
-jieba>=0.42.1
-snownlp>=0.12.3
-beautifulsoup4==4.12.3
+streamlit
+requests
+beautifulsoup4
+jieba
+pandas
+pyecharts
+streamlit-echarts
